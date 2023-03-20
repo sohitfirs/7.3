@@ -4,32 +4,13 @@
 #include <cmath>
 #include <cstdlib>
 
-int sqrt()
+int sqrt(int a)
 {
-	int mas1[4];
-	int mas2[4];
 	int x = 0;
 	
-	printf("Vvedite 3 polozhitelnyh chisla\n");
-	for (int i=0; i<3;i++)
+	for (int i=0; i<a+1; i++)
 	{
-		printf("Vvedite %i chislo - ", i+1);
-		scanf("%i", &mas1[i]);
-		if (mas1[i]<0)
-		{
-			return -1;
-			
-		}
-	}
-	
-	for (int i=0; i<3; i++)
-	{
-		mas2[i] = pow(mas1[i],0.5);
-	}
-	
-	for (int i=0; i<3;i++)
-	{
-		if(mas1[i]==mas2[i]*mas2[i])
+		if (i*i==a)
 		{
 			x++;
 		}
@@ -37,31 +18,52 @@ int sqrt()
 	return x;
 }
 
-int sqrt2();
+int sqrt(int b, int x)
+{
+	int *y = &b;
+	
+	for (int i=0; i<*y+1; i++)
+	{
+		if (i*i==*y)
+		{
+			x++;
+		}
+	}
+	return x;
+}
+
+int sqrt(int c, int x, int y)
+{
+	for (int i=0; i<y+1; i++)
+	{
+		if (i*i==y)
+		{
+			x++;
+		}
+	}
+	return x;
+}
 
 int main()
 {
-	int y = sqrt();
-	int *x = &y ;
-	int &w = y;
+	int a;
+	int b;
+	int c;
+	int d;
+	int x = 0;
+	int &y = c;
 	
-	if (y==-1)
-	{
-		printf("ERROR\nVse chisla dolzhny byt polozhitelnye\n");
-	}
-	else
-	{
-		printf("%i\n",y);
-	//	printf("%i\n", &y);
-		
-		printf("%i\n", *x);
-	//	printf("%i ", x);
-	//	printf("%i\n", &x);
-		
-		printf("%i\n", w);
-	//	printf("%i\n", &w);
-	}
-		
-	system ("pause");
+	printf("Vvedite 3 polozhitelnyh chisla\n");
+	printf("Vvedite 1 chislo - ");
+	scanf("%i", &a);
+	printf("Vvedite 2 chislo - ");
+	scanf("%i", &b);
+	printf("Vvedite 3 chislo - ");
+	scanf("%i", &c);
+	
+	d = sqrt(a)+sqrt(b, x)+sqrt(c, x, y);
+	printf("%i\n", d);
+	
+	system("pause");
 	return 1;
 }
